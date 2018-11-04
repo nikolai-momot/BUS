@@ -28,18 +28,14 @@ defmodule Bus.Mixfile do
     [
       mod: {Bus.Application, []},
       applications: [
-        :amqp,
         :cowboy,
         :gen_state_machine,
         :gettext,
-        :httpoison,
-        :httpotion,
         :logger,
         :phoenix,
         :phoenix_ecto,
         :phoenix_html,
         :phoenix_pubsub,
-        :poison,
         :postgrex,
         :scrivener_list,
         :scrivener_ecto
@@ -56,19 +52,15 @@ defmodule Bus.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:amqp, "~> 1.0.2"},
       {:cowboy, "~> 1.0"},
       {:credo, "~> 0.9.0", only: [:dev, :test], runtime: false},
       {:gen_state_machine, "~> 2.0"},
       {:gettext, "~> 0.11"},
-      {:httpoison, "~> 0.13"},
-      {:httpotion, "~> 3.0.2"},
       {:plug_cowboy, "~> 1.0"},
       {:phoenix, "~> 1.3.0"},
       {:phoenix_ecto, "~> 3.2"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:poison, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
       {:scrivener_ecto, "~> 1.0"},
       {:scrivener_list, "~> 1.0"}
