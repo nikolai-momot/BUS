@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Use local mix if available
+if [ -f vendor/bin/mix ]; then
+  PATH=vendor/bin:${PATH} vendor/bin/mix $@
+else
+  mix $@
+fi
