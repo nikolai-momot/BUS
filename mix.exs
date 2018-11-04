@@ -29,14 +29,11 @@ defmodule Bus.Mixfile do
       mod: {Bus.Application, []},
       applications: [
         :amqp,
-        :countries,
         :cowboy,
-        :exometer_core,
         :gen_state_machine,
         :gettext,
         :httpoison,
         :httpotion,
-        :jose,
         :logger,
         :phoenix,
         :phoenix_ecto,
@@ -45,13 +42,7 @@ defmodule Bus.Mixfile do
         :poison,
         :postgrex,
         :scrivener_list,
-        :scrivener_ecto,
-        :cachex,
-        :csv,
-        :yamerl,
-        :varint,
-        :quantum,
-        :timex
+        :scrivener_ecto
       ]
     ]
   end
@@ -66,18 +57,12 @@ defmodule Bus.Mixfile do
   defp deps do
     [
       {:amqp, "~> 1.0.2"},
-      {:benchee, "~> 0.11", only: [:dev, :test]},
-      {:countries, "~> 1.5"},
       {:cowboy, "~> 1.0"},
       {:credo, "~> 0.9.0", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.16", only: :dev, runtime: false},
-      {:exometer_core, "~> 1.5.2"},
-      {:exrm, "~> 1.0"},
       {:gen_state_machine, "~> 2.0"},
       {:gettext, "~> 0.11"},
       {:httpoison, "~> 0.13"},
       {:httpotion, "~> 3.0.2"},
-      {:jose, "~> 1.8"},
       {:plug_cowboy, "~> 1.0"},
       {:phoenix, "~> 1.3.0"},
       {:phoenix_ecto, "~> 3.2"},
@@ -86,12 +71,7 @@ defmodule Bus.Mixfile do
       {:poison, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
       {:scrivener_ecto, "~> 1.0"},
-      {:scrivener_list, "~> 1.0"},
-      {:cachex, "~> 2.1"},
-      {:csv, "~>2.0"},
-      {:varint, "~> 1.0.0"},
-      {:quantum, "~> 2.2"},
-      {:timex, "~> 3.0"}
+      {:scrivener_list, "~> 1.0"}
     ]
   end
 
