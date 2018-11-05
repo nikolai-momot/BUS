@@ -3,22 +3,25 @@ defmodule BusWeb.UserView do
   alias BusWeb.UserView
 
   def render("index.json", %{users: users}) do
+    IO.puts "index"
     %{
-      page: %{
-        entries:
-          render_many(
-            15,
-            UserView,
-            "user.json",
-            users: users
-          )
-      }
+      entries:
+        render_many(
+          users,
+          UserView,
+          "show.json"
+        ),
     }
   end
 
-  def render("user.json", %{user: user}) do
+  def render("show.json", %{user: user}) do
+    IO.puts "show"
+    IO.inspect user
     %{
-      id: user.id
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      phone: user.phone
     }
   end
 end

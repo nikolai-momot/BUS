@@ -7,12 +7,11 @@ defmodule Bus.Application do
   def start(_type, _args) do
     import Supervisor.Spec
 
-    children=
-      [
-        supervisor(Bus.Repo, []),
-        worker(Bus.Users, []),
-        supervisor(BusWeb.Endpoint, [])
-      ]
+    children = [
+      supervisor(Bus.Repo, []),
+      worker(Bus.Users, []),
+      supervisor(BusWeb.Endpoint, [])
+    ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options

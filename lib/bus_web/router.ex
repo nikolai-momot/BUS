@@ -7,6 +7,8 @@ defmodule BusWeb.Router do
 
   scope "/api", BusWeb do
     pipe_through(:api)
-    get("/users", UsersController, :index)
+    get("/users", UserController, :index)
+    post("/users/create", UserController, :create)
+    get("/users/:id", UserController, :show)
   end
 end

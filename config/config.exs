@@ -22,14 +22,6 @@ config :bus, BusWeb.Endpoint,
   render_errors: [view: BusWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Bus.PubSub, adapter: Phoenix.PubSub.PG2]
 
-config :lager,
-  crash_log: false,
-  error_logger_redirect: false,
-  error_logger_whitelist: [Logger.ErrorLogger],
-  handlers: [
-    lager_console_backend: [level: :info]
-  ]
-
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
