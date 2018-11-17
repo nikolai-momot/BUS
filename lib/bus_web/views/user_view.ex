@@ -18,7 +18,8 @@ defmodule BusWeb.UserView do
       first_name: user.first_name,
       last_name: user.last_name,
       email: user.email,
-      phone: user.phone
+      phone: user.phone,
+      id: user.id
     }
   end
 end
