@@ -9,7 +9,7 @@
 # These can be overridden in .Makefile.defaults
 export BUS_BIN_PATH         ?= vendor/bin
 export BUS_DB_HOST          ?= localhost
-export BUS_DB_NAME          ?= bus
+export BUS_DB_NAME          ?= bus_dev
 export BUS_DB_USER          ?= postgres
 export BUS_DB_PASS          ?=
 export BUS_ELIXIR_VERSION   ?= v1.6.4
@@ -38,7 +38,7 @@ new-migration: build $(MIX)
 	@$(MIX) ecto.gen.migration new_migration
 
 migrate: build $(MIX)
-	@$(IEX) -S mix run -e "Bus.Release.Tasks.migrate"
+	@$(IEX) -S mix run -e "Bus.Utilities.Tasks.migrate"
 
 serve: build $(MIX)
 	@$(MIX) phx.server

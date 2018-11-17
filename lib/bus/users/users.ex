@@ -4,6 +4,9 @@ defmodule Bus.Users do
   """
   use GenServer
 
+  import Ecto.Query, warn: false
+
+  alias Bus.Repo
   alias Bus.Users.User
 
   # Client
@@ -17,25 +20,24 @@ defmodule Bus.Users do
   end
 
   def list_users(_params) do
-    {:ok, []}
+    query = from(u in User)
+
+    with users <- Repo.all(query),
+         true <- is_list(users) do
+      {:ok, users}
+    end
   end
 
   def get_user(id) do
-    IO.puts "getting user #{id}"
-    %User{
-      first_name: "Nikolai",
-      last_name: "Momot",
-      email: "momot.nick@gmail.com"
-    }
+    with {:ok, user} <- Repo.get!(User, id) do
+      {:ok, user}
+    end
   end
 
-  def create_user(_params) do
-    user = %User{
-      first_name: "Nikolai",
-      last_name: "Momot",
-      email: "momot.nick@gmail.com"
-    }
-
-    {:ok, user}
+  def create_user(attrs \\ %{}) do
+    with changeset <- User.changeset(%User{}, attrs),
+         {:ok, user} <- Repo.insert(changeset) do
+      {:ok, user}
+    end
   end
 end

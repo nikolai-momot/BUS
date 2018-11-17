@@ -20,8 +20,6 @@ defmodule BusWeb.UserController do
 
   def create(conn, %{"user" => params}) do
     with {:ok, user} <- Users.create_user(params) do
-      IO.puts "create"
-      IO.inspect user
       render(conn, "show.json", user: user)
     end
   end
