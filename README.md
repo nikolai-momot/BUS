@@ -1,21 +1,9 @@
-# Bus
+# Base User Service
 
-**TODO: Add description**
+Personal project to create an Elixir micro service
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `bus` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:bus, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/bus](https://hexdocs.pm/bus).
+Goals:
+- Implement presence monitoring with the [prensence module](https://hexdocs.pm/phoenix/presence.html)
+- Add test suite
+- Implemment multi node functionality
 

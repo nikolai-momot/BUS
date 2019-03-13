@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "b333a3dd-490e-417d-b091-b1a55d868bf1",
+		"name": "BUS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user\": {\n    \t\"first_name\": \"Nikolai\",\n    \t\"last_name\": \"Momot\",\n    \t\"email\": \"momot.nick@gmail.com\",\n    \t\"status\": \"active\" \n\t}\n}"
+				},
+				"url": {
+					"raw": "{{host}}:42000/api/users/create",
+					"host": [
+						"{{host}}"
+					],
+					"port": "42000",
+					"path": [
+						"api",
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users: List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}:42000/api/users",
+					"host": [
+						"{{host}}"
+					],
+					"port": "42000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}:42000/api/users/1",
+					"host": [
+						"{{host}}"
+					],
+					"port": "42000",
+					"path": [
+						"api",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
