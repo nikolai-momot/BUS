@@ -9,8 +9,8 @@
 # These can be overridden in .Makefile.defaults
 export BUS_BIN_PATH         ?= vendor/bin
 export BUS_DB_HOST          ?= localhost
-export BUS_DB_NAME          ?= bus_dev
-export BUS_DB_USER          ?= postgres
+export BUS_DB_NAME          ?= bus
+export BUS_DB_USER          ?= bus
 export BUS_DB_PASS          ?=
 export BUS_ELIXIR_VERSION   ?= v1.6.4
 export BUS_ERLANG_VERSION   ?= OTP-20.3.4

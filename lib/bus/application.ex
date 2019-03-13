@@ -10,7 +10,8 @@ defmodule Bus.Application do
     children = [
       supervisor(Bus.Repo, []),
       worker(Bus.Users, []),
-      supervisor(BusWeb.Endpoint, [])
+      supervisor(BusWeb.Endpoint, []),
+      supervisor(BusWeb.Presence, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

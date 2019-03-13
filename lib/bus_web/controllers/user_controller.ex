@@ -6,6 +6,12 @@ defmodule BusWeb.UserController do
 
   alias Bus.Users
 
+  action_fallback(BusWeb.FallbackController)
+
+  def socket(conn, params) do
+    BusWeb.UserSocket.connect(params, conn)
+  end
+
   def index(conn, params) do
     with {:ok, users} <- Users.list_users(params) do
       render(conn, "index.json", users: users)
