@@ -29,7 +29,7 @@ defmodule Bus.Users do
   end
 
   def get_user(id) do
-    with {:ok, user} <- Repo.get!(User, id) do
+    with user <- Repo.get!(User, id) do
       {:ok, user}
     else
       _ -> raise Bus.NoUserError

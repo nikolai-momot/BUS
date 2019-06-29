@@ -77,35 +77,6 @@ defmodule Bus.Users.User do
   @doc """
   Convert a struct to a map and walk all its keys, recursively converting any
   structs to maps.
-
-  ## Examples
-    iex> Cpu.Helpers.structs_to_maps(%Date{
-    ...>   calendar: nil, day: 1, month: 2, year: 3
-    ...> })
-    %{calendar: nil, day: 1, month: 2, year: 3}
-
-    iex> Cpu.Helpers.structs_to_maps(%{
-    ...>   foo: %Date{calendar: nil, day: 1, month: 2, year: 3},
-    ...>   bar: "baz"
-    ...> })
-    %{bar: "baz", foo: %{calendar: nil, day: 1, month: 2, year: 3}}
-
-    iex> Cpu.Helpers.structs_to_maps(%Date{
-    ...>   calendar: %Date{calendar: nil, day: 4, month: 5, year: 6},
-    ...>   day: 1, month: 2, year: 3
-    ...> })
-    %{calendar: %{calendar: nil, day: 4, month: 5, year: 6}, day: 1, month: 2, year: 3}
-
-    iex> Cpu.Helpers.structs_to_maps([
-    ...>   1, %Date{calendar: nil, day: 2, month: 3, year: 4}, "five"
-    ...> ])
-    [1, %{calendar: nil, day: 2, month: 3, year: 4}, "five"]
-
-    iex> Cpu.Helpers.structs_to_maps(nil)
-    nil
-
-    iex> Cpu.Helpers.structs_to_maps(123)
-    123
   """
   def structs_to_maps(%{__struct__: _} = struct) do
     struct

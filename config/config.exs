@@ -27,6 +27,25 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# Import environment specific config. This must remain at the bottom
-# of this file so it overrides the configuration defined above.
-import_config "#{Mix.env()}.exs"
+config :bus, BusWeb.Endpoint,
+  http: [port: {:system, "BUS_PORT"}],
+  debug_errors: true,
+  code_reloader: true,
+  check_origin: false,
+  watchers: []
+
+# Do not include metadata nor timestamps in development logs
+config :logger, :console, format: "[$level] $message\n"
+
+# Set a higher stacktrace during development. Avoid configuring such
+# in production as building large stacktraces may be expensive.
+config :phoenix, :stacktrace_depth, 20
+
+# Configure your database
+config :bus, Bus.Repo,
+  database: "bus",
+  pool_size: 10
+
+config :bus, Bus.AuditRepo, database: "bus"
+
+config :bus, :debug_verify_changesets, false

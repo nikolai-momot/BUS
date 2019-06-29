@@ -19,7 +19,8 @@ defmodule BusWeb.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    with user <- Users.get_user(id) do
+    with id <- String.to_integer(id),
+         {:ok, user} <- Users.get_user(id) do
       render(conn, "show.json", user: user)
     end
   end
