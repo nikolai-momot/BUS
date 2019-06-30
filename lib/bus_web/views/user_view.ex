@@ -3,7 +3,6 @@ defmodule BusWeb.UserView do
   alias BusWeb.UserView
 
   def render("index.json", %{users: users}) do
-    IO.inspect users
     %{
       entries:
         render_many(

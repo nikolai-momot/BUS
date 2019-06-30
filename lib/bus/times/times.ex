@@ -25,7 +25,6 @@ defmodule Bus.Times do
 
     with times <- Repo.all(query),
          true <- is_list(times) do
-          IO.inspect times
       {:ok, times}
     end
   end
@@ -61,7 +60,6 @@ defmodule Bus.Times do
   end
 
   def update_time(id, attrs) do
-    IO.inspect id
     with {:ok, time} <- get_time(id),
          changeset <- Time.changeset(time, attrs) do
       Repo.update!(changeset)
