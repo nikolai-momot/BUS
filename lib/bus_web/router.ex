@@ -10,5 +10,6 @@ defmodule BusWeb.Router do
     get("/users", UserController, :index)
     post("/users/create", UserController, :create)
     get("/users/:id", UserController, :show)
+    get("/users/:id/times", UserController, :times)
   end
 end

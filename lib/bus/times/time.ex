@@ -1,74 +1,54 @@
-defmodule Bus.Users.User do
+defmodule Bus.Times.Time do
   @moduledoc """
-  This module defines the base user schema.
+  This module defines the time schema for managing clocking in/out
   """
   alias Bus.Times.Time
-  alias Bus.Users.User
   alias Bus.Repo
 
   import Ecto.Changeset
 
   use Ecto.Schema
 
-  @optional [
-    :phone
-  ]
+  @optional []
 
   @required [
-    :first_name,
-    :last_name,
-    :status,
-    :email
+    :user_id,
+    :event_time,
+    :status
   ]
 
   def fields, do: @required ++ @optional
 
   @statuses [
-    "active",
-    "inactive"
+    "on_duty",
+    "off_duty"
   ]
 
-  schema "users" do
-    field(:first_name, :string)
-    field(:last_name, :string)
+  schema "times" do
+    field(:user_id, :integer)
+    field(:event_time, :utc_datetime)
     field(:status, :string)
-    field(:email, :string)
-    field(:phone, :string)
-    has_many(:times, Time, foreign_key: :user_id, on_replace: :delete)
 
     timestamps()
   end
 
   @doc """
-  Prepare user changes to be persisted to the database.
+  Prepare time changes to be persisted to the database.
   """
-  def changeset(nil, %User{} = new) do
-    empty = Repo.preload(%User{}, [])
+  def changeset(nil, %Time{} = new) do
+    empty = Repo.preload(%Time{}, [])
     changeset(empty, new)
   end
 
-  def changeset(
-        %User{id: id_a} = old_user,
-        %User{id: id_b} = new_user
-      ) do
-    if id_a != id_b do
-      raise "Tried to change different users: #{id_a}, #{id_b}."
-    end
-
-    old_user
-    |> change
-    |> put_change(:status, new_user.status)
-  end
-
   @doc """
-  Build a changeset for a user
+  Build a changeset for a time
 
-  Common validation rules are checked. The underlying user type can also
+  Common validation rules are checked. The underlying time type can also
   add validation rules as the changeset is passed to
-  `User.changeset/4`.
+  `Time.changeset/4`.
   """
-  def changeset(%User{} = user, attrs) do
-    user
+  def changeset(%Time{} = time, attrs) do
+    time
     |> change
     |> cast(structs_to_maps(attrs), @required ++ @optional)
     |> validate_required(@required)

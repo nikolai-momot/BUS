@@ -5,6 +5,7 @@ defmodule BusWeb.UserController do
   use BusWeb, :controller
 
   alias Bus.Users
+  alias Bus.Times
 
   action_fallback(BusWeb.FallbackController)
 
@@ -28,6 +29,13 @@ defmodule BusWeb.UserController do
   def create(conn, %{"user" => params}) do
     with {:ok, user} <- Users.create_user(params) do
       render(conn, "show.json", user: user)
+    end
+  end
+
+  def times(conn, params) do
+    IO.inspect params
+    with {:ok, times} <- Times.list_user_times(params) do
+      render(conn, "times.json", times: times)
     end
   end
 end

@@ -2,12 +2,12 @@ defmodule Bus.Users do
   @moduledoc """
   The Users context.
   """
+  alias Bus.Repo
+  alias Bus.Users.User
+
   use GenServer
 
   import Ecto.Query, warn: false
-
-  alias Bus.Repo
-  alias Bus.Users.User
 
   # Client
   #
@@ -29,10 +29,10 @@ defmodule Bus.Users do
   end
 
   def get_user(id) do
-    with user <- Repo.get!(User, id) do
+    with %User{} = user <- Repo.get!(User, id) do
       {:ok, user}
     else
-      _ -> raise Bus.NoUserError
+      _ -> raise Bus.NoItemError
     end
   end
 

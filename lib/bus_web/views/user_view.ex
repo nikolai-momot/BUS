@@ -22,4 +22,22 @@ defmodule BusWeb.UserView do
       id: user.id
     }
   end
+
+  def render("times.json", %{times: times}) do
+    %{
+      entries:
+        render_many(
+          times,
+          UserView,
+          "time.json"
+        ),
+    }
+  end
+
+  def render("time.json", %{time: time}) do
+    %{
+      status: time.status,
+      event_time: time.event_time,
+    }
+  end
 end

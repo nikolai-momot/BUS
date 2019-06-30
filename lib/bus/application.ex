@@ -10,6 +10,7 @@ defmodule Bus.Application do
     children = [
       supervisor(Bus.Repo, []),
       worker(Bus.Users, []),
+      worker(Bus.Times, []),
       supervisor(BusWeb.Endpoint, []),
       supervisor(BusWeb.Presence, [])
     ]

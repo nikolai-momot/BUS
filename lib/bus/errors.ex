@@ -1,6 +1,6 @@
-defmodule Bus.NoUserError do
+defmodule Bus.NoItemError do
   defexception plug_status: 404,
-               message: "no user found",
+               message: "Item not found",
                conn: nil,
                router: nil
 end
