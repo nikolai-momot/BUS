@@ -10,14 +10,14 @@ defmodule Bus.Users.User do
   use Ecto.Schema
 
   @optional [
-    :phone
+    :phone,
+    :status,
+    :email
   ]
 
   @required [
     :first_name,
-    :last_name,
-    :status,
-    :email
+    :last_name
   ]
 
   def fields, do: @required ++ @optional
