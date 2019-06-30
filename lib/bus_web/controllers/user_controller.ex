@@ -6,6 +6,7 @@ defmodule BusWeb.UserController do
 
   alias Bus.Users
   alias Bus.Times
+  alias BusWeb.TimeView
 
   action_fallback(BusWeb.FallbackController)
 
@@ -19,23 +20,40 @@ defmodule BusWeb.UserController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
+  def show_user(conn, %{"id" => id}) do
     with id <- String.to_integer(id),
          {:ok, user} <- Users.get_user(id) do
-      render(conn, "show.json", user: user)
+      render(conn, "user.json", user: user)
     end
   end
 
-  def create(conn, %{"user" => params}) do
+  def create_user(conn, %{"user" => params}) do
     with {:ok, user} <- Users.create_user(params) do
-      render(conn, "show.json", user: user)
+      render(conn, "user.json", user: user)
     end
   end
 
-  def times(conn, params) do
-    IO.inspect params
+  def update_user(conn, %{"id" => id, "user" => params}) do
+    with user <- Users.update_user(id, params) do
+      render(conn, "user.json", user: user)
+    end
+  end
+
+  def show_times(conn, params) do
     with {:ok, times} <- Times.list_user_times(params) do
-      render(conn, "times.json", times: times)
+      render(conn, TimeView, "times.json", times: times)
+    end
+  end
+
+  def create_time(conn, %{"id" => id, "time" => params}) do
+    with {:ok, time} <- Times.create_time(id, params) do
+      render(conn, TimeView, "time.json", time: time)
+    end
+  end
+
+  def update_time(conn, %{"id" => id, "time" => params}) do
+    with time <- Times.update_time(id, params) do
+      render(conn, TimeView, "time.json", time: time)
     end
   end
 end

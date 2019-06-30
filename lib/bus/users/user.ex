@@ -2,7 +2,6 @@ defmodule Bus.Users.User do
   @moduledoc """
   This module defines the base user schema.
   """
-  alias Bus.Times.Time
   alias Bus.Users.User
   alias Bus.Repo
 
@@ -34,7 +33,6 @@ defmodule Bus.Users.User do
     field(:status, :string)
     field(:email, :string)
     field(:phone, :string)
-    has_many(:times, Time, foreign_key: :user_id, on_replace: :delete)
 
     timestamps()
   end

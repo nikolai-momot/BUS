@@ -4,8 +4,6 @@ defmodule BusWeb.FallbackController do
 
   See `Phoenix.Controller.action_fallback/1` for more details.
   """
-  alias Bus.Users.User
-
   require Logger
 
   use BusWeb, :controller

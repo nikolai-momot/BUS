@@ -40,6 +40,19 @@ defmodule Bus.Times.Time do
     changeset(empty, new)
   end
 
+  def changeset(
+        %Time{id: id_a} = old_time,
+        %Time{id: id_b} = new_time
+      ) do
+    if id_a != id_b do
+      raise "Tried to change different times: #{id_a}, #{id_b}."
+    end
+
+    old_time
+    |> change
+    |> put_change(:status, new_time.status)
+  end
+
   @doc """
   Build a changeset for a time
 

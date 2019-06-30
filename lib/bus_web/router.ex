@@ -8,8 +8,12 @@ defmodule BusWeb.Router do
   scope "/api", BusWeb do
     pipe_through(:api)
     get("/users", UserController, :index)
-    post("/users/create", UserController, :create)
-    get("/users/:id", UserController, :show)
-    get("/users/:id/times", UserController, :times)
+    post("/users", UserController, :create_user)
+    put("/users/:id", UserController, :update_user)
+    get("/users/:id", UserController, :show_user)
+    get("/users/:id/times", UserController, :show_times)
+    post("/users/:id/times", UserController, :create_time)
+    put("/times/:id", UserController, :update_time)
+    get("/times/:id", UserController, :show_time)
   end
 end

@@ -8,7 +8,7 @@ defmodule Bus.Times do
 
   alias Bus.Repo
   alias Bus.Times.Time
-  alias Bus.Users.User
+  alias Bus.Users
 
   # Client
   #
@@ -51,10 +51,20 @@ defmodule Bus.Times do
     end
   end
 
-  def create_time(attrs \\ %{}) do
-    with changeset <- User.changeset(%User{}, attrs),
-         {:ok, user} <- Repo.insert(changeset) do
-      {:ok, user}
+  def create_time(id, %{"status" => status}) do
+    now = DateTime.utc_now()
+    time = %{user_id: id, event_time: now, status: status}
+    with changeset <- Time.changeset(%Time{}, time),
+         {:ok, time} <- Repo.insert(changeset) do
+      {:ok, time}
+    end
+  end
+
+  def update_time(id, attrs) do
+    IO.inspect id
+    with {:ok, time} <- get_time(id),
+         changeset <- Time.changeset(time, attrs) do
+      Repo.update!(changeset)
     end
   end
 end

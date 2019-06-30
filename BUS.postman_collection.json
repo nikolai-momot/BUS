@@ -22,7 +22,36 @@
 					"raw": "{\n\t\"user\": {\n    \t\"first_name\": \"Nikolai\",\n    \t\"last_name\": \"Momot\",\n    \t\"email\": \"momot.nick@gmail.com\",\n    \t\"status\": \"active\" \n\t}\n}"
 				},
 				"url": {
-					"raw": "{{host}}:42000/api/users/create",
+					"raw": "{{host}}:42000/api/users",
+					"host": [
+						"{{host}}"
+					],
+					"port": "42000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user\": {\n    \t\"status\": \"inactive\" \n\t}\n}"
+				},
+				"url": {
+					"raw": "{{host}}:42000/api/users/1",
 					"host": [
 						"{{host}}"
 					],
@@ -30,7 +59,27 @@
 					"path": [
 						"api",
 						"users",
-						"create"
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:42000/api/users/1",
+					"host": [
+						"{{host}}"
+					],
+					"port": "42000",
+					"path": [
+						"api",
+						"users",
+						"1"
 					]
 				}
 			},
@@ -41,10 +90,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "{{host}}:42000/api/users",
 					"host": [
@@ -60,16 +105,23 @@
 			"response": []
 		},
 		{
-			"name": "User",
+			"name": "Create Time",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"time\": {\n    \t\"status\": \"on_duty\" \n\t}\n}"
 				},
 				"url": {
-					"raw": "{{host}}:42000/api/users/1",
+					"raw": "{{host}}:42000/api/users/1/times",
 					"host": [
 						"{{host}}"
 					],
@@ -77,6 +129,58 @@
 					"path": [
 						"api",
 						"users",
+						"1",
+						"times"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Times",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:42000/api/users/1/times",
+					"host": [
+						"{{host}}"
+					],
+					"port": "42000",
+					"path": [
+						"api",
+						"users",
+						"1",
+						"times"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Time",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"time\": {\n    \t\"status\": \"off_duty\" \n\t}\n}"
+				},
+				"url": {
+					"raw": "{{host}}:42000/api/times/1",
+					"host": [
+						"{{host}}"
+					],
+					"port": "42000",
+					"path": [
+						"api",
+						"times",
 						"1"
 					]
 				}

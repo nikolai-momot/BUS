@@ -42,4 +42,11 @@ defmodule Bus.Users do
       {:ok, user}
     end
   end
+
+  def update_user(id, attrs) do
+    with {:ok, user} <- get_user(id),
+         changeset <- User.changeset(user, attrs) do
+      Repo.update!(changeset)
+    end
+  end
 end
